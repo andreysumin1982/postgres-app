@@ -1,5 +1,6 @@
 import requests
 from selenium import webdriver
+from selenium_stealth import stealth
 import time
 from datetime import datetime
 #
@@ -41,15 +42,30 @@ class Parser:
         ''''''
         try:
             options = webdriver.ChromeOptions()
-            #options.set_capability('general.useragent.override', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36')
-            options.add_argument("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36")
-            driver = webdriver.Chrome(
-                executable_path='/home/asumin/web-app/postgres-app/5ka/chromedriver/chromedriver',
-                options=options
-            )
+            options.add_argument("start-maximized")
+
+            # options.add_argument("--headless")
+
+            options.add_experimental_option("excludeSwitches", ["enable-automation"])
+            options.add_experimental_option('useAutomationExtension', False)
+            driver = webdriver.Chrome(options=options,
+                                      executable_path="/usr/bin/chromedriver",
+                                      )
+
+
+            stealth(driver,
+                    languages=["en-US", "en"],
+                    vendor="Google Inc.",
+                    platform="Win32",
+                    webgl_vendor="Intel Inc.",
+                    renderer="Intel Iris OpenGL Engine",
+                    fix_hairline=True,
+                    )
+
+
 
             # Делаем GET-запрос и ждем 5 сек
-            driver.get(url = self.url)
+            driver.get(self.url)
             time.sleep(15)
         except Exception as EX:
             print(f"[ERROR] => {EX}\n")

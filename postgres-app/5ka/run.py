@@ -1,4 +1,4 @@
-from bs4 import BeautifulSoup as bs
+#from bs4 import BeautifulSoup as bs
 from parser import Parser
 #
 def run():
@@ -15,9 +15,9 @@ def run():
 
     response = Parser(url, HEADERS)
     result = response.getHTMLSelenium()
-    print(result)
-    #with open(save_file, 'w') as file:
-    #    file.write(result)
+    print(type(result))
+    with open(save_file, 'w') as file:
+        file.write(result)
 
 
 if __name__ == '__main__':
@@ -25,5 +25,5 @@ if __name__ == '__main__':
     url = 'https://edadeal.ru/sankt-peterburg/retailers/5ka'
     #url = 'https://wttr.in/%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3'
     save_file = '/home/asumin/web-app/postgres-app/5ka/dataset.html'
-    run()
+    #run()
 
