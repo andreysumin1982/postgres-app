@@ -1,4 +1,0 @@
-2022-08-03 09:07:28
-[ERROR] => https://wttrr.in/%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3
-HTTPSConnectionPool(host='wttrr.in', port=443): Max retries exceeded with url: /%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fbf4d461780>: Failed to establish a new connection: [Errno -2] Name or service not known'))
-

@@ -1,7 +1,9 @@
 from bs4 import BeautifulSoup
-from modules.parser import Parser
+from csv_file import save_csv
 from modules.stealth import Stealth
 from time import sleep
+#
+'''Парсер "5ка" берет данные с сайта edadeal.ru и записывает в бд.'''
 #
 def getStealthHTML(url, step=None, retry=None):
     try:
@@ -57,22 +59,20 @@ def processData(data_file):
             dataset[product_name.get_text()].append(price_new.get_text())
             dataset[product_name.get_text()].append(price_old.get_text())
             dataset[product_name.get_text()].append(image['src'])
-
+        #
         except:
             error_list.append(f"[INFO] => {product_name}\n")
             continue
-    print(dataset)
-
+    #print(dataset)
+    save_csv.save(dataset)
     #
-    for k,v in dataset.items():
-        print(k,''.join(v))
 
 #
 if __name__ == '__main__':
     #print(Parser.__doc__)
     #url = 'https://edadeal.ru/sankt-peterburg/retailers/5ka'
     #url = 'https://wttr.ini/%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3'
-    save_file = '/home/asumin/web-app/postgres-app/5ka/dataset3.html'
+    save_file = '/home/asumin/web-app/postgres-app/5ka/dataset.html'
     #getPages()
     processData(save_file)
 
